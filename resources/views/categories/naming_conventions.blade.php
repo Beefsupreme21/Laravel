@@ -4,7 +4,7 @@
     
         <div class="mt-10 mb-5">
             <div class="flex items-center mb-5 -ml-10">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2">
                 <p class="text-3xl">Routes</p>
             </div>
             <p class="mb-5">Use the plural form of the resource name.</p>
@@ -17,7 +17,7 @@
 
         <div class="mt-10 mb-5">
             <div class="flex items-center mb-5 -ml-10">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2">
                 <p class="text-3xl">Controllers</p>
             </div>
             <p class="mb-5">They should be in singular case, no spacing between words, be in PascalCase/CapitalCase, and end with "Controller". </p>
@@ -41,7 +41,7 @@
 
         <div class="mt-10 mb-5">
             <div class="flex items-center mb-5 -ml-10">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2">
                 <p class="text-3xl">Models</p>
             </div>
             <p class="mb-5">A model name should meet the following criteria:</p>

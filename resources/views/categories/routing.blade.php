@@ -4,7 +4,7 @@
     
         <div class="mt-10 mb-5">
             <div class="flex items-center mb-5 -ml-10">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-8 h-8 mr-2">
                 <p class="text-3xl">Basic Routes</p>
             </div>
             <p class="mb-5">Generally routes are going to accept a URI and a closure</p>
@@ -17,7 +17,7 @@
 
         <div class="mt-10 mb-5">
             <div class="flex items-center my-5 -ml-6">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2">
                 <p class="text-xl">Routing to controller</p>
             </div>
             <p class="mb-5">By calling a controller from a route, you can separate the concerns of your application, making it easier to manage and maintain. The controller can handle the business logic of your application, while the route simply maps the request to the appropriate controller action.</p>
@@ -28,7 +28,7 @@
 
         <div class="mt-10 mb-5">
             <div class="flex items-center my-5 -ml-6">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2">
                 <p class="text-xl">Typical CRUD App</p>
             </div>
             <script type="text/plain" class="language-javascript max-w-[640px]">
@@ -44,7 +44,7 @@
 
         <div class="mt-10 mb-5">
             <div class="flex items-center my-5 -ml-6">
-                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2" alt="My Image">
+                <img src="{{ asset('images/hashtag.png') }}" class="w-4 h-4 mr-2">
                 <p class="text-xl">Resource Controllers</p>
             </div>
             <p class="mb-5">Using the resource helper, you can define a set of routes with a single line of code. </p>
