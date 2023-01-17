@@ -1,81 +1,37 @@
 <x-layout>
-    <div x-data="table" class="px-4 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-                <h1 class="text-2xl font-semibold mt-10 mb-8 leading-6 text-gray-900">Users</h1>
-            </div>
-            <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                <a href="/users/create" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Create User</a>
-            </div>
-        </div>
-        <div class="mt-8 flex flex-col">
-            <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID</th>
-                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Email</th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 w-12"></th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 w-12"></th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <template x-for="user in users" :key="user.id">
-                                    <tr>
-                                        <td x-text="user.id" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"></td>
-                                        <td x-text="user.name" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"></td>
-                                        <td x-text="user.email" class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"></td>
-                                        <td class="px-4 py-2">
-                                            <a @click="currentUser = user" x-bind:href="'/users/' + currentUser.id + '/edit'">
-                                                <x-svg.edit class="w-6 h-6 hover:stroke-blue-500" />
-                                            </a>
-                                        </td>
-                                        <td class="px-4 py-2">
-                                            <button @click="showModal = true; currentUser = user">
-                                                <x-svg.delete class="w-6 h-6 hover:stroke-blue-500" />             
-                                            </button>
-                                            <div x-show="showModal" @click.away="showModal = false"
-                                            class="fixed inset-0 z-50 flex justify-center items-center px-4 py-8 bg-gray-900 bg-opacity-25">
-                                                <div @click.away="showModal = false" class="relative max-w-md rounded-lg shadow-xl overflow-hidden">
-                                                    <div class="bg-white px-8 pt-6 pb-4">
-                                                        <h2 class="mb-6 text-90 font-normal text-xl">Delete User</h2>
-                                                        <p class="text-lg text-gray-600 mb-4">Are you sure you want to delete this user?</p>
-                                                        <div class="flex justify-end">
-                                                            <button @click="showModal = false" class="text-gray-600 font-bold py-2 px-4 rounded-lg">
-                                                                Cancel            
-                                                            </button>
-                                                            <form method="POST" x-bind:action="'/users/' + currentUser.id">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button class="bg-red-500 text-white font-bold ml-4 py-2 px-4 rounded-lg">
-                                                                    Delete            
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="min-h-screen ml-24 mr-16">
+        <h1 class="text-4xl text-center text-white font-bold my-5">Users</h1>
+        <form action="/user-search" method="POST">
+            @csrf
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
+                <input type="text" name="searchQuery" value="{{ request('searchQuery') ?? null }}" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search" required>
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
             </div>
-        </div>
+        </form>
+        <table class="w-full text-left bg-gray-600 rounded-lg shadow-md mt-8">
+            <thead class="text-white bg-gray-900">
+                <tr>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Age</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Email Verified At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr class="text-white even:bg-gray-800">
+                        <td class="border border-black px-4 py-2">{{ $user->name }}</td>
+                        <td class="border border-black px-4 py-2">{{ $user->age }}</td>
+                        <td class="border border-black px-4 py-2">{{ $user->email }}</td>
+                        <td class="border border-black px-4 py-2">{{ $user->email_verified_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
     </div>
-      
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('table', () => ({
-                users: @json($users),
-                showModal: false,
-                currentUser: null,
-            }))
-        })
-    </script>
 </x-layout>
+

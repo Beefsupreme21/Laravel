@@ -20,7 +20,7 @@
 
         <div class="flex flex-1 flex-col bg-[#171923] md:pl-64">
             <x-mobile-nav-toggle />   
-            <main class="max-w-screen-lg min-h-screen sm:px-16 md:px-24">
+            <main>
                 {{ $slot }}
             </main>
         </div>

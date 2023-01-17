@@ -9,7 +9,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::when(request('searchQuery'), function ($query) {
+            return $query->where('name', 'like', '%' . request('searchQuery') . '%')
+            ->orWhere('email', 'like', '%' . request('searchQuery') . '%');
+        })->get();
 
         return view('users.index', [
             'users' => $users,
