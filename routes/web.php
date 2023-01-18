@@ -18,23 +18,20 @@ Route::post('/user-search', function() {
 Route::get('/methods', function () {
     // Retrieval
     $users = User::all();
-    $firstUser = User::first(); // gets the first record from the 'users' table
-    $findOrFailUser = User::findOrFail(5);  // gets a record from the 'users' table where the 'id' column is 5
-    $firstUserName = User::first()->pluck('name'); // Retrieve the 'name' column from the first record of the 'users' table
-    $firstUserWhere = User::firstWhere('age', 30); // gets first user where the age is 30
+    $users = User::first(); // gets the first record from the 'users' table
+    $users = User::findOrFail(5);  // gets a record from the 'users' table where the 'id' column is 5
+    $users = User::first()->pluck('name'); // Retrieve the 'name' column from the first record of the 'users' table
+    $users = User::firstWhere('age', 30); // gets first user where the age is 30
 
     // Filtering
-    $filteredUsers = $users->filter(function ($user) {
+    $users = $users->filter(function ($user) {
         return $user->age > 90;
     });
-    $latestUsers = User::latest()->take(5)->get();
-    $oldestUsers = User::oldest()->take(5)->get();
-    $whereUsers = User::where('age', '>', 90)->get();
-    $orWhereUsers = User::where('name', 'John')->orWhere('name', 'Steve')->get();
-    $whereBetweenUsers = User::whereBetween('email_verified_at', ['2023-01-13 00:00:00', '2023-01-14 23:59:59'])->get();
-
-
-
+    $users = User::latest()->take(5)->get();
+    $users = User::oldest()->take(5)->get();
+    $users = User::where('age', '>', 90)->get();
+    $users = User::where('name', 'John')->orWhere('name', 'Steve')->get();
+    $users = User::whereBetween('email_verified_at', ['2023-01-13 00:00:00', '2023-01-14 23:59:59'])->get();
 
     // Sorting - used for organizing data in a particular order 
     $users = User::inRandomOrder()->get();
@@ -44,12 +41,9 @@ Route::get('/methods', function () {
 
     /* sortBy is a method that can be used on a collection of results after they have been retrieved from the database
     orderBy is a method that is used to sort the results of a query before they are retrieved from the database. */
-    // $users = User::get();
-    // $users = $users->sortBy('name');
+    $users = User::get();
+    $users = $users->sortBy('name');
     
-
-
-
     // Aggregating - used for calculating statistical information from the data
     $averageAge = User::avg('age');
     $countUsers = User::count();
@@ -60,10 +54,6 @@ Route::get('/methods', function () {
     $users = User::get();
     $user_emails = User::pluck('email');
     $combined = $users->combine($user_emails);
-    dd($combined);
-
-
-
 
     return view('categories.method', [
         'users' => $users,
