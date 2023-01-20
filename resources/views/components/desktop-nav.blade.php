@@ -7,7 +7,7 @@
                     <span class="text-3xl ml-2 ">Laravel</span>
                 </a>
             </div>
-            <nav x-data="{ selected: '' }" class="mt-5 flex-1 space-y-.5 px-6">
+            <nav class="mt-5 flex-1 space-y-.5 px-6">
                 <a href="/routing" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
                     Routing
                 </a>
@@ -26,7 +26,7 @@
                 <a href="/migrations" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
                     Migrations
                 </a>
-                <a href="/methods" x-on:click="selected !== methods ? selected = methods : selected = ''" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
+                <a href="/methods" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
                     Methods
                 </a>
 
@@ -42,20 +42,21 @@
                 <a href="/helpers" x-on:click="selected !== helpers ? selected = helpers : selected = ''" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
                     Helpers
                 </a>
-                {{-- <a href="#" x-show="selected === helpers" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
-                    Helpers 2
-                </a>
-                <a href="#" x-show="selected === helpers" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
-                    Helpers 3
-                </a> --}}
                 <a href="/naming-conventions" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
                     Naming Conventions
                 </a>
+                <a href="/users" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center px-2 py-1 font-bold rounded-md">
+                    Users
+                </a>
+
+                @if (request()->is('users'))
+                    <a href="#" class="text-gray-500 hover:bg-gray-700 hover:text-[#77C1D2] flex items-center ml-2 px-2 py-1 rounded-md">
+                        Create New User
+                    </a>
+                @endif
+
                 <a href="/test" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center mt-8 px-2 py-1 font-bold rounded-md">
                     Testing
-                </a>
-                <a href="/users" class="text-gray-300 text-lg hover:bg-gray-700 hover:text-[#77C1D2] flex items-center mt-8 px-2 py-1 font-bold rounded-md">
-                    Users
                 </a>
 
             </nav>

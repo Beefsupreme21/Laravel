@@ -12,7 +12,7 @@ class UserController extends Controller
         $users = User::when(request('searchQuery'), function ($query) {
             return $query->where('name', 'like', '%' . request('searchQuery') . '%')
             ->orWhere('email', 'like', '%' . request('searchQuery') . '%');
-        })->get();
+        })->with('role')->get();
 
         return view('users.index', [
             'users' => $users,

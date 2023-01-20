@@ -17,16 +17,15 @@ Route::post('/user-search', function() {
 
 Route::get('/methods', function () {
     // Retrieval
-    $users = User::all();
     $users = User::first(); // gets the first record from the 'users' table
     $users = User::findOrFail(5);  // gets a record from the 'users' table where the 'id' column is 5
     $users = User::first()->pluck('name'); // Retrieve the 'name' column from the first record of the 'users' table
     $users = User::firstWhere('age', 30); // gets first user where the age is 30
 
     // Filtering
-    $users = $users->filter(function ($user) {
-        return $user->age > 90;
-    });
+    // $users = $users->filter(function ($user) {
+    //     return $user->age > 90;
+    // });
     $users = User::latest()->take(5)->get();
     $users = User::oldest()->take(5)->get();
     $users = User::where('age', '>', 90)->get();
@@ -54,6 +53,8 @@ Route::get('/methods', function () {
     $users = User::get();
     $user_emails = User::pluck('email');
     $combined = $users->combine($user_emails);
+
+    $users = User::all();
 
     return view('categories.method', [
         'users' => $users,
