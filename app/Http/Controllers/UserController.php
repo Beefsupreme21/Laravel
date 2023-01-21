@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
         $users = User::when(request('searchQuery'), function ($query) {
             return $query->where('name', 'like', '%' . request('searchQuery') . '%')
             ->orWhere('email', 'like', '%' . request('searchQuery') . '%');
-        })->with('role')->get();
+        })->with('role.permissions')->get();
 
         return view('users.index', [
             'users' => $users,

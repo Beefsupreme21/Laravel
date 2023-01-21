@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\permission;
-use App\Http\Requests\StorepermissionRequest;
-use App\Http\Requests\UpdatepermissionRequest;
+use App\Models\Permission;
+use App\Http\Requests\StorePermissionRequest;
+use App\Http\Requests\UpdatePermissionRequest;
 
 class PermissionController extends Controller
 {
@@ -31,10 +31,10 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepermissionRequest  $request
+     * @param  \App\Http\Requests\StorePermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepermissionRequest $request)
+    public function store(StorePermissionRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class PermissionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\permission  $permission
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show(permission $permission)
+    public function show(Permission $permission)
     {
         //
     }
@@ -53,10 +53,10 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\permission  $permission
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit(permission $permission)
+    public function edit(Permission $permission)
     {
         //
     }
@@ -64,11 +64,11 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatepermissionRequest  $request
-     * @param  \App\Models\permission  $permission
+     * @param  \App\Http\Requests\UpdatePermissionRequest  $request
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepermissionRequest $request, permission $permission)
+    public function update(UpdatePermissionRequest $request, Permission $permission)
     {
         //
     }
@@ -76,10 +76,10 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\permission  $permission
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(permission $permission)
+    public function destroy(Permission $permission)
     {
         //
     }
